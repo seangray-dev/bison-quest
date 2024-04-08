@@ -1,7 +1,10 @@
+import SiteNavigation from "@/components/layout/site-navigation";
+import { ThemeProvider } from "@/components/providers/theme-provider";
+import { ThirdwebProvider } from "@/lib/thirdweb";
+import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { ThirdwebProvider } from "@/app/thirdweb";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,8 +21,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <ThirdwebProvider>{children}</ThirdwebProvider>
+      <body
+        className={`${inter.className} min-h-screen bg-background antialiased`}
+      >
+        <ThemeProvider attribute="class" defaultTheme="system">
+          <ThirdwebProvider>
+            <SiteNavigation />
+            {children}
+          </ThirdwebProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
