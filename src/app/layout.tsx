@@ -22,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.className} min-h-screen bg-background antialiased`}
+        className={`${inter.className} flex min-h-screen flex-col bg-background antialiased`}
       >
         <ThemeProvider attribute="class" defaultTheme="system">
           <ThirdwebProvider>
